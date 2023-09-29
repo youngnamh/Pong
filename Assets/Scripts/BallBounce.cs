@@ -13,6 +13,7 @@ public class BallBounce : MonoBehaviour
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
+    public bool isFirstHit = true;
     public bool player1HitLast = false;
 
 
@@ -45,21 +46,29 @@ public class BallBounce : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method handles collectibles. The ball does not collide with them,
+    /// and based on who hit last, they get power bar points. The first movement
+    /// before a hit cannot trigger a collectible.
+    /// </summary>
+    /// <param name="collider">The collectible being triggered</param>
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //if the ball collides with a collectible
         if(collider.gameObject.CompareTag("collectible"))
-        {
-            print("player1Hitlast: "+player1HitLast);
-            Destroy(collider.gameObject);
-            if(player1HitLast) {
+        {   
+            //if its player 1's collectible
+            if(player1HitLast && !isFirstHit) {
+                Destroy(collider.gameObject);
                 print("player1 got collectible");
                 int powerLevel = powerBarManager.getPlayer1PL();
-                powerBarManager.setPlayer1PL(powerLevel + 1);
-            } else {
+                powerBarManager.setPlayer1PL(powerLevel + 3);
+            //if its player 2's collectible    
+            } else if (!player1HitLast && !isFirstHit) {
+                Destroy(collider.gameObject);
                 print("player2 got collectible");
                 int powerLevel = powerBarManager.getPlayer2PL();
-                powerBarManager.setPlayer2PL(powerLevel + 1);
+                powerBarManager.setPlayer2PL(powerLevel + 3);
             }
         }
     }
@@ -75,7 +84,8 @@ public class BallBounce : MonoBehaviour
 
         if(collision.gameObject.name == "Player 1")
         {
-            player1HitLast = true;
+            this.player1HitLast = true;
+            this.isFirstHit = false;
             int powerLevel = powerBarManager.getPlayer1PL();
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
@@ -88,7 +98,8 @@ public class BallBounce : MonoBehaviour
         } 
         else if(collision.gameObject.name == "Player 2")
         {
-            player1HitLast = false;
+            this.player1HitLast = false;
+            this.isFirstHit = false;
             int powerLevel = powerBarManager.getPlayer2PL();
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
@@ -106,7 +117,7 @@ public class BallBounce : MonoBehaviour
             scoreManager.Player1Goal();
             ballMovement.player1Start = false;
             StartCoroutine(ballMovement.Launch());
-            player1HitLast = true;
+            this.isFirstHit = true;
         }
 
         else if(collision.gameObject.name == "Left Border")
@@ -114,9 +125,10 @@ public class BallBounce : MonoBehaviour
             scoreManager.Player2Goal();
             ballMovement.player1Start = true;
             StartCoroutine(ballMovement.Launch());
-            player1HitLast = true;
+            player1HitLast = false;
+            this.isFirstHit = true;        
         }
-
+        print("player 1 hit last: "+player1HitLast);
         Instantiate(hitSFX, transform.position, transform.rotation);
     }
 
