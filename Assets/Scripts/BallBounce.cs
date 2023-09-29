@@ -13,7 +13,7 @@ public class BallBounce : MonoBehaviour
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
-    public bool player1HitLast = true;
+    public bool player1HitLast = false;
 
 
     /// <summary>
@@ -45,24 +45,33 @@ public class BallBounce : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// This method will decide whether the ball should bounce after colliding with an object, or 
-    /// start a new round if someone scored a point.
-    /// </summary>
-    /// <param name="collision">The collision object of a ball hitting eitehr a border or a paddle</param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.CompareTag("collectible"))
+        //if the ball collides with a collectible
+        if(collider.gameObject.CompareTag("collectible"))
         {
-            Destroy(collision.gameObject);
+            console.log("player1Hitlast: "+player1HitLast)
+            Destroy(collider.gameObject);
             if(player1HitLast) {
+                console.log("player1 got collectible");
                 int powerLevel = powerBarManager.getPlayer1PL();
                 powerBarManager.setPlayer1PL(powerLevel + 1);
             } else {
+                console.log("player2 got collectible");
                 int powerLevel = powerBarManager.getPlayer2PL();
                 powerBarManager.setPlayer2PL(powerLevel + 1);
             }
         }
+    }
+    
+    
+    /// <summary>
+    /// This method will decide whether the ball should bounce after colliding with an object, or 
+    /// start a new round if someone scored a point.
+    /// </summary>
+    /// <param name="collision">The collision object of a ball hitting either a border or a paddle</param>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
 
         if(collision.gameObject.name == "Player 1")
         {
