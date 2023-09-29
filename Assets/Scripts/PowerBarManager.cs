@@ -8,7 +8,7 @@ using TMPro;
 /// </summary>
 public class PowerBarManager : MonoBehaviour
 {
-    private int powerMax = 5;
+    private int powerMax = 10;
     private int player1PowerLevel = 0;
     private int player2PowerLevel = 0; 
 

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - collectible
+  - interactable
+  - breakable
+  - notch
   layers:
   - Default
   - TransparentFX
@@ -39,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 48707125
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

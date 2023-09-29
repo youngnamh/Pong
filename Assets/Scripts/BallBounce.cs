@@ -16,6 +16,7 @@ public class BallBounce : MonoBehaviour
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
     public CollectibleGenerator collectibleGenerator;
+    public BreakableGenerator breakableGenerator;
 
 
     /// <summary>
@@ -28,7 +29,6 @@ public class BallBounce : MonoBehaviour
         Vector3 ballPosition = transform.position;
         Vector3 racketPosition = collision.transform.position;
         float racketHeight = collision.collider.bounds.size.y;
-
         //check if collision is Player1 or Player2
         float positionX;
         if(collision.gameObject.name == "Player 1")
@@ -39,7 +39,7 @@ public class BallBounce : MonoBehaviour
         {
             positionX = -1;
         }
-
+        
         float positionY = (ballPosition.y - racketPosition.y) / racketHeight;
 
         ballMovement.MoveBall(new Vector2(positionX, positionY), bonus);
@@ -62,11 +62,13 @@ public class BallBounce : MonoBehaviour
                 Destroy(collider.gameObject);
                 int powerLevel = powerBarManager.getPlayer1PL();
                 powerBarManager.setPlayer1PL(powerLevel + 3);
+                this.collectibleGenerator.decreaseTimeInterval();
             //if its player 2's collectible    
             } else if (!player1HitLast && !isFirstHit) {
                 Destroy(collider.gameObject);
                 int powerLevel = powerBarManager.getPlayer2PL();
                 powerBarManager.setPlayer2PL(powerLevel + 3);
+                this.collectibleGenerator.decreaseTimeInterval();
             }
         }
     }
@@ -125,6 +127,7 @@ public class BallBounce : MonoBehaviour
             StartCoroutine(ballMovement.Launch());
             this.isFirstHit = true;
             collectibleGenerator.stopGenerator();
+            breakableGenerator.stopGenerator();
         }
 
         else if(collision.gameObject.name == "Left Border")
@@ -134,8 +137,18 @@ public class BallBounce : MonoBehaviour
             StartCoroutine(ballMovement.Launch());
             player1HitLast = false;
             this.isFirstHit = true;     
-            collectibleGenerator.stopGenerator();   
+            collectibleGenerator.stopGenerator();  
+            breakableGenerator.stopGenerator(); 
         }
+
+        //Any breakable objects should be destroyed and they should spawn quicker
+        if(collision.gameObject.CompareTag("breakable"))
+        {
+            Destroy(collision.gameObject);
+            this.breakableGenerator.decreaseTimeInterval();
+        }
+
+
         Instantiate(hitSFX, transform.position, transform.rotation);
         
     }

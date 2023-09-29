@@ -16,6 +16,7 @@ public class BallMovement : MonoBehaviour
     public Rigidbody2D rb;
     public PowerBarManager powerBarManager;
     public CollectibleGenerator collectibleGenerator;
+    public BreakableGenerator breakableGenerator;
 
     /// <summary>
     /// Set Rigidbody value and start the coroutine Launch().
@@ -52,11 +53,13 @@ public class BallMovement : MonoBehaviour
         {
             MoveBall(new Vector2(-1,0));
             this.collectibleGenerator.startGenerator();
+            this.breakableGenerator.startGenerator();
         }
         else
         {
             MoveBall(new Vector2(1,0));
             this.collectibleGenerator.startGenerator();
+            this.breakableGenerator.startGenerator();
         }
     }
 

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class creates collectibles randomly throughout the game. 
+/// This class creates breakables randomly throughout the game. 
 /// </summary>
-public class CollectibleGenerator : MonoBehaviour
+public class BreakableGenerator : MonoBehaviour
 {
-    public GameObject coinPrefab;
-    private Vector2 spawnArea = new Vector2(7f,4f);
-    private float initialTimeInterval = 5;
+    public GameObject blockPrefab;
+    private Vector2 spawnArea = new Vector2(5f,4f);
+    private float initialTimeInterval = 7;
     private float currentTimeInterval;
     private bool isGeneratorOn = false;
 
@@ -20,7 +20,7 @@ public class CollectibleGenerator : MonoBehaviour
     public void startGenerator() {
         this.isGeneratorOn = true;
         this.currentTimeInterval = this.initialTimeInterval;
-        StartCoroutine(SpawnCollectibles());
+        StartCoroutine(SpawnBreakables());
     }
 
     /// <summary>
@@ -28,15 +28,15 @@ public class CollectibleGenerator : MonoBehaviour
     /// </summary>
     public void stopGenerator() {
         this.isGeneratorOn = false;
-        DestroyALlCollectibles();
+        DestroyAllCollectibles();
 
     }
 
     /// <summary>
-    /// While the generator is on, this method spawns a collectible each time the initialTimeInterval passes.
+    /// While the generator is on, this method spawns a collectible each time the InitialTimeInterval passes.
     /// </summary>
     /// <returns>IENumerator to wait the time interval to be called again</returns>
-    private IEnumerator SpawnCollectibles()
+    private IEnumerator SpawnBreakables()
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
         {
@@ -47,28 +47,28 @@ public class CollectibleGenerator : MonoBehaviour
             );
 
             // Instantiate the Coin prefab at the random position
-            Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
 
-            yield return new WaitForSeconds(currentTimeInterval); 
+            yield return new WaitForSeconds(this.currentTimeInterval); 
         }
     }
 
     public void decreaseTimeInterval(){
-        this.currentTimeInterval -= 0.3f;
-        print("collect time:" + currentTimeInterval);
+        this.currentTimeInterval -= 0.35f;
+        print("break time: "+ currentTimeInterval);
     }
 
     /// <summary>
     /// This method destroys all the collectibles that are currently active. 
     /// </summary>
-    private void DestroyALlCollectibles()
+    private void DestroyAllCollectibles()
     {
-        GameObject[] coins = GameObject.FindGameObjectsWithTag("collectible");
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag("breakable");
 
         // Iterate through the found GameObjects and destroy them
-        foreach (GameObject coin in coins)
+        foreach (GameObject block in blocks)
         {
-            Destroy(coin);
+            Destroy(block);
         }
     }
 }
