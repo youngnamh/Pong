@@ -49,7 +49,6 @@ public class CollectibleGenerator : MonoBehaviour
 
             yield return new WaitForSeconds(timeInterval); 
         }
-        print("coroutine stopped");
     }
 
     /// <summary>

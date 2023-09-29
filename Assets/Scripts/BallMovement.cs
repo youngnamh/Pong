@@ -46,7 +46,7 @@ public class BallMovement : MonoBehaviour
     {
         RestartBall();
         hitCounter = 0;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         if(player1Start)
         {

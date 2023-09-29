@@ -10,7 +10,7 @@ using TMPro;
 /// </summary>
 public class ScoreManager : MonoBehaviour
 {
-    public int finalScore;
+    private int finalScore = 5;
     private int player1Score = 0;
     private int player2Score = 0; 
 
@@ -42,11 +42,16 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private void CheckScore()
     {
-        if(player1Score == finalScore || player2Score == finalScore)
+        if(player1Score >= finalScore || player2Score >= finalScore)
         {
-            //add wait for 1-2 seconds and sounds effect
-            SceneManager.LoadScene(2);
+            StartCoroutine(EndGame());
         }
+    }
+
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(0.75f);
+        SceneManager.LoadScene(2);
     }
 
 }
