@@ -11,6 +11,7 @@ public class BallMovement : MonoBehaviour
     public bool player1Start = true;
     private int hitCounter = 0;
     public Rigidbody2D rb;
+    public PowerBarManager powerBarManager;
 
     /// <summary>
     /// Set Rigidbody value and start the coroutine Launch().
@@ -57,22 +58,29 @@ public class BallMovement : MonoBehaviour
     /// Normalizes the direction of the ball and sets a new ballSpeed based on the hitCounter.
     /// </summary>
     /// <param name="direction">A Vector2 object specifying the direction of the ball</param>
-    public void MoveBall(Vector2 direction)
+    public void MoveBall(Vector2 direction, bool bonus = false)
     {
 
         direction = direction.normalized;
 
         //bonus speed is added if its 3rd hit for now.
         float bonusSpeed = 0;
-        if(hitCounter % 3 == 0 && hitCounter != 0)
+        if(bonus)
         {
-            bonusSpeed = 10;
+            bonusSpeed = CalculateBonus();
         }
-
         float ballSpeed = (startSpeed + hitCounter * extraSpeed) + bonusSpeed;
 
         rb.velocity = direction * ballSpeed;
 
+    }
+
+    public int CalculateBonus() {
+        if(this.hitCounter < 10) {
+            return 20;
+        } else {
+            return 10;
+        }
     }
 
     /// <summary>

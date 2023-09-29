@@ -11,7 +11,7 @@ public class BallBounce : MonoBehaviour
     public bool player1HitLast = true;
 
 
-    private void Bounce(Collision2D collision)
+    private void Bounce(Collision2D collision, bool bonus = false)
     {
         Vector3 ballPosition = transform.position;
         Vector3 racketPosition = collision.transform.position;
@@ -31,7 +31,7 @@ public class BallBounce : MonoBehaviour
         float positionY = (ballPosition.y - racketPosition.y) / racketHeight;
 
         ballMovement.IncreaseHitCounter();
-        ballMovement.MoveBall(new Vector2(positionX, positionY));
+        ballMovement.MoveBall(new Vector2(positionX, positionY), bonus);
 
     }
 
@@ -41,15 +41,28 @@ public class BallBounce : MonoBehaviour
         {
             player1HitLast = true;
             int powerLevel = powerBarManager.getPlayer1PL();
-            powerBarManager.setPlayer1PL(powerLevel + 1);
-            Bounce(collision);
+            int powerMax = powerBarManager.getPowerMax();
+            if(powerLevel >= powerMax ) {
+                powerBarManager.setPlayer1PL(0);
+                Bounce(collision, true);
+            } else {
+                powerBarManager.setPlayer1PL(powerLevel + 1);
+                Bounce(collision);
+            }
         } 
         else if(collision.gameObject.name == "Player 2")
         {
             player1HitLast = false;
             int powerLevel = powerBarManager.getPlayer2PL();
-            powerBarManager.setPlayer2PL(powerLevel + 1);
-            Bounce(collision);
+            int powerMax = powerBarManager.getPowerMax();
+            if(powerLevel >= powerMax ) {
+                powerBarManager.setPlayer2PL(0);
+                Bounce(collision, true);
+            } else {
+                powerBarManager.setPlayer2PL(powerLevel + 1);
+                Bounce(collision);
+            }            
+
         }
 
         else if(collision.gameObject.name == "Right Border")
@@ -70,5 +83,7 @@ public class BallBounce : MonoBehaviour
 
         Instantiate(hitSFX, transform.position, transform.rotation);
     }
+
+    public bool getPlayerHitLast() => this.player1HitLast;
 
 }
