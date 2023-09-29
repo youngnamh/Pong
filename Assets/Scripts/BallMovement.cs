@@ -8,10 +8,10 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
 
-    public float startSpeed;
-    public float extraSpeed;
-    public float maxExtraSpeed;
-    public bool player1Start = true;
+    private float startSpeed = 5;
+    private float extraSpeed = 0.5f;
+    private float maxExtraSpeed = 10;
+    private bool player1Start = true;
     private int hitCounter = 0;
     public Rigidbody2D rb;
     public PowerBarManager powerBarManager;
@@ -102,6 +102,19 @@ public class BallMovement : MonoBehaviour
         {
             hitCounter++;
         }
+    }
+
+    public bool Player1Start
+    {
+        get { return player1Start; }
+        set { player1Start = value; }
+    }
+
+    // Getter for hitCounter
+    public int HitCounter
+    {
+        get { return hitCounter; }
+        set { hitCounter = value; }
     }
 }
 

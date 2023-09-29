@@ -42,7 +42,6 @@ public class BallBounce : MonoBehaviour
 
         float positionY = (ballPosition.y - racketPosition.y) / racketHeight;
 
-        ballMovement.IncreaseHitCounter();
         ballMovement.MoveBall(new Vector2(positionX, positionY), bonus);
 
     }
@@ -85,6 +84,7 @@ public class BallBounce : MonoBehaviour
         //if the ball collides with Player 1
         if(collision.gameObject.name == "Player 1")
         {
+            ballMovement.IncreaseHitCounter();
             // player1 was the last to hit the ball (for collectibles)
             this.player1HitLast = true;
             //collectibles are active
@@ -103,6 +103,7 @@ public class BallBounce : MonoBehaviour
         } 
         else if(collision.gameObject.name == "Player 2")
         {
+            ballMovement.IncreaseHitCounter();
             this.player1HitLast = false;
             this.isFirstHit = false;
             int powerLevel = powerBarManager.getPlayer2PL();
@@ -122,7 +123,7 @@ public class BallBounce : MonoBehaviour
         {
             //Start new round, collectibles deactivated
             scoreManager.Player1Goal();
-            ballMovement.player1Start = false;
+            ballMovement.Player1Start = false;
             StartCoroutine(ballMovement.Launch());
             this.isFirstHit = true;
             collectibleGenerator.stopGenerator();
@@ -131,7 +132,7 @@ public class BallBounce : MonoBehaviour
         else if(collision.gameObject.name == "Left Border")
         {
             scoreManager.Player2Goal();
-            ballMovement.player1Start = true;
+            ballMovement.Player1Start = true;
             StartCoroutine(ballMovement.Launch());
             player1HitLast = false;
             this.isFirstHit = true;     

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class represents the computer player. 
+/// This class represents the computer player. It is embarrassing how a few lines of code 
+/// is much better than me at the game.
 /// </summary>
 public class Player2 : MonoBehaviour
 {
-    public float racketSpeed;
+    private float racketSpeed;
     private float resetSpeed;
     private Rigidbody2D rb;
     public Rigidbody2D ball;
     private int counter;
+    public BallMovement ballMovement;
 
 
     /// <summary>
@@ -21,8 +23,8 @@ public class Player2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        this.racketSpeed = 10;
-        this.resetSpeed = 3;
+        this.racketSpeed = 8;
+        this.resetSpeed = 2;
     }
 
     /// <summary>
@@ -46,6 +48,18 @@ public class Player2 : MonoBehaviour
             Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, resetSpeed * Time.deltaTime);
             rb.MovePosition(newPosition);            
         }
+
+        int hitCounter = ballMovement.HitCounter;
+
+        //adjust the computers racket speed to account for it being better than me. 
+        if (hitCounter < 5) {
+            this.racketSpeed = 8;
+        } else if (hitCounter >= 5 && hitCounter < 10) {
+            this.racketSpeed = 7;
+        } else if (hitCounter >= 10) {
+            this.racketSpeed = 6;
+        }
+
     }
 
 }

@@ -1073,8 +1073,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f5da097ab33405c867ae7c02680b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  racketSpeed: 20
   ball: {fileID: 1531777927}
+  ballMovement: {fileID: 1531777929}
 --- !u!1 &793207551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,10 +2350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874d095477fb647c0bf874c3a4703608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
-  extraSpeed: 1
-  maxExtraSpeed: 5
   player1Start: 1
+  hitCounter: 0
   rb: {fileID: 0}
   powerBarManager: {fileID: 879286582}
   collectibleGenerator: {fileID: 879286583}
