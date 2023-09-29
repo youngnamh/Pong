@@ -9,22 +9,31 @@ public class CollectibleGenerator : MonoBehaviour
 {
     public GameObject coinPrefab;
     private Vector2 spawnArea = new Vector2(7f,4f);
-    private float timeInterval = 1;
+    private float timeInterval = 5;
     private bool isGeneratorOn = false;
 
 
-
+    /// <summary>
+    /// This method starts the Generator.
+    /// </summary>
     public void startGenerator() {
         this.isGeneratorOn = true;
         StartCoroutine(SpawnCollectibles());
     }
 
+    /// <summary>
+    /// This method stops the Generator.
+    /// </summary>
     public void stopGenerator() {
         this.isGeneratorOn = false;
         DestroyALlCollectibles();
 
     }
 
+    /// <summary>
+    /// While the generator is on, this method spawns a collectible each time the timeInterval passes.
+    /// </summary>
+    /// <returns>IENumerator to wait the time interval to be called again</returns>
     private IEnumerator SpawnCollectibles()
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
@@ -43,6 +52,9 @@ public class CollectibleGenerator : MonoBehaviour
         print("coroutine stopped");
     }
 
+    /// <summary>
+    /// This method destroys all the collectibles that are currently active. 
+    /// </summary>
     private void DestroyALlCollectibles()
     {
         GameObject[] coins = GameObject.FindGameObjectsWithTag("collectible");
