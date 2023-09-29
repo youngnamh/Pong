@@ -55,7 +55,6 @@ public class CollectibleGenerator : MonoBehaviour
 
     public void decreaseTimeInterval(){
         this.currentTimeInterval -= 0.3f;
-        print("collect time:" + currentTimeInterval);
     }
 
     /// <summary>

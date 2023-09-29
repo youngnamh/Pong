@@ -1046,15 +1046,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99a8efebddc4146caa6ba33533ec7ebc, type: 2}
+  m_sharedMaterial: {fileID: 7122176646787904649, guid: 99a8efebddc4146caa6ba33533ec7ebc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283256141
-  m_fontColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+    rgba: 2993055334
+  m_fontColor: {r: 0.4, g: 0.4, b: 0.4, a: 0.69803923}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9351495, b: 0.9716981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1676,15 +1676,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99a8efebddc4146caa6ba33533ec7ebc, type: 2}
+  m_sharedMaterial: {fileID: 7122176646787904649, guid: 99a8efebddc4146caa6ba33533ec7ebc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283256141
-  m_fontColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+    rgba: 3009766757
+  m_fontColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.7019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2622,6 +2622,7 @@ GameObject:
   - component: {fileID: 879286583}
   - component: {fileID: 879286585}
   - component: {fileID: 879286584}
+  - component: {fileID: 879286586}
   m_Layer: 0
   m_Name: Borders
   m_TagString: Untagged
@@ -2717,6 +2718,52 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
+--- !u!114 &879286586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879286579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9cbfd9dc3d642f4b1c30a564440671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerBar: {fileID: 631204871}
+  powerBarManager: {fileID: 879286582}
+  powerPoints:
+  - {fileID: 1762604061}
+  - {fileID: 1211814269}
+  - {fileID: 1901789889}
+  - {fileID: 1637202232}
+  - {fileID: 18092049}
+  - {fileID: 594756988}
+  - {fileID: 865368404}
+  - {fileID: 2120470613}
+  - {fileID: 690060449}
+  - {fileID: 1876948249}
+  - {fileID: 689738963}
+  - {fileID: 1341328582}
+  - {fileID: 807322833}
+  - {fileID: 143249814}
+  - {fileID: 906625141}
+  - {fileID: 2020670550}
+  - {fileID: 422847331}
+  - {fileID: 1114610270}
+  - {fileID: 386607104}
+  - {fileID: 284043628}
+  - {fileID: 785299907}
+  - {fileID: 1778902735}
+  - {fileID: 693487353}
+  - {fileID: 277201787}
+  - {fileID: 1320241045}
+  - {fileID: 1135612966}
+  - {fileID: 1251901154}
+  - {fileID: 2064953293}
+  - {fileID: 246445960}
+  - {fileID: 591748181}
+  - {fileID: 26613182}
 --- !u!1 &906625139
 GameObject:
   m_ObjectHideFlags: 0

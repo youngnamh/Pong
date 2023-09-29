@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class manages the players power bars.
 /// </summary>
 public class PowerBarManager : MonoBehaviour
 {
-    private int powerMax = 10;
+    private int powerMax = 30;
     private int player1PowerLevel = 0;
     private int player2PowerLevel = 0; 
-
     public TextMeshProUGUI player1PowerLevelText;
     public TextMeshProUGUI player2PowerLevelText;
+
+
+
 
     /// <summary>
     /// Setter for player 1. WIll not go passed the powerMax.

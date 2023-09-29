@@ -55,7 +55,6 @@ public class BreakableGenerator : MonoBehaviour
 
     public void decreaseTimeInterval(){
         this.currentTimeInterval -= 0.35f;
-        print("break time: "+ currentTimeInterval);
     }
 
     /// <summary>
