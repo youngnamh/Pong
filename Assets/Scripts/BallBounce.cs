@@ -50,14 +50,14 @@ public class BallBounce : MonoBehaviour
         //if the ball collides with a collectible
         if(collider.gameObject.CompareTag("collectible"))
         {
-            console.log("player1Hitlast: "+player1HitLast)
+            print("player1Hitlast: "+player1HitLast);
             Destroy(collider.gameObject);
             if(player1HitLast) {
-                console.log("player1 got collectible");
+                print("player1 got collectible");
                 int powerLevel = powerBarManager.getPlayer1PL();
                 powerBarManager.setPlayer1PL(powerLevel + 1);
             } else {
-                console.log("player2 got collectible");
+                print("player2 got collectible");
                 int powerLevel = powerBarManager.getPlayer2PL();
                 powerBarManager.setPlayer2PL(powerLevel + 1);
             }
