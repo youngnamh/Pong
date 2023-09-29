@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SuctionTube : MonoBehaviour
 {
-
+    public float speed;
 
     /// <summary>
     /// When the ball enters the suctionTube it increases speed.
@@ -18,8 +18,9 @@ public class SuctionTube : MonoBehaviour
         Rigidbody2D ball = collider.GetComponent<Rigidbody2D>();
         if (ball != null)
         {
-            Vector2 boostedSpeed = ball.velocity * 1.5f;
+            Vector2 boostedSpeed = ball.velocity * speed;
             ball.velocity = boostedSpeed;
         }
     }
+
 }
