@@ -102,3 +102,15 @@ public class BallMovement : MonoBehaviour
         }
     }
 }
+
+
+/*
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("PickUp")){
+        other.gameObject.SetActive(false);
+        count++;
+        SetCountText();
+        }
+    }
+*/

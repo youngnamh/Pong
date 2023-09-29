@@ -52,6 +52,18 @@ public class BallBounce : MonoBehaviour
     /// <param name="collision">The collision object of a ball hitting eitehr a border or a paddle</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.CompareTag("collectible"))
+        {
+            Destroy(collision.gameObject);
+            if(player1HitLast) {
+                int powerLevel = powerBarManager.getPlayer1PL();
+                powerBarManager.setPlayer1PL(powerLevel + 1);
+            } else {
+                int powerLevel = powerBarManager.getPlayer2PL();
+                powerBarManager.setPlayer2PL(powerLevel + 1);
+            }
+        }
+
         if(collision.gameObject.name == "Player 1")
         {
             player1HitLast = true;
