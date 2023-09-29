@@ -15,6 +15,7 @@ public class BallMovement : MonoBehaviour
     private int hitCounter = 0;
     public Rigidbody2D rb;
     public PowerBarManager powerBarManager;
+    public CollectibleGenerator collectibleGenerator;
 
     /// <summary>
     /// Set Rigidbody value and start the coroutine Launch().
@@ -50,10 +51,12 @@ public class BallMovement : MonoBehaviour
         if(player1Start)
         {
             MoveBall(new Vector2(-1,0));
+            this.collectibleGenerator.startGenerator();
         }
         else
         {
             MoveBall(new Vector2(1,0));
+            this.collectibleGenerator.startGenerator();
         }
     }
 
@@ -69,8 +72,7 @@ public class BallMovement : MonoBehaviour
 
         //bonus speed is added if its 3rd hit for now.
         float bonusSpeed = 0;
-        if(bonus)
-        {
+        if (bonus) {
             bonusSpeed = CalculateBonus();
         }
         float ballSpeed = (startSpeed + hitCounter * extraSpeed) + bonusSpeed;

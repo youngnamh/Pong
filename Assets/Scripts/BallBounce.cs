@@ -15,6 +15,7 @@ public class BallBounce : MonoBehaviour
     public PowerBarManager powerBarManager;
     public bool isFirstHit = true;
     public bool player1HitLast = false;
+    public CollectibleGenerator collectibleGenerator;
 
 
     /// <summary>
@@ -81,16 +82,20 @@ public class BallBounce : MonoBehaviour
     /// <param name="collision">The collision object of a ball hitting either a border or a paddle</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        //if the ball collides with Player 1
         if(collision.gameObject.name == "Player 1")
         {
+            // player1 was the last to hit the ball (for collectibles)
             this.player1HitLast = true;
+            //collectibles are active
             this.isFirstHit = false;
+            //add 1 point to power bar
             int powerLevel = powerBarManager.getPlayer1PL();
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
                 powerBarManager.setPlayer1PL(0);
                 Bounce(collision, true);
+            // launch power shot if power ball is full    
             } else {
                 powerBarManager.setPlayer1PL(powerLevel + 1);
                 Bounce(collision);
@@ -112,12 +117,15 @@ public class BallBounce : MonoBehaviour
 
         }
 
+        //Player 1 gets a point
         else if(collision.gameObject.name == "Right Border")
         {
+            //Start new round, collectibles deactivated
             scoreManager.Player1Goal();
             ballMovement.player1Start = false;
             StartCoroutine(ballMovement.Launch());
             this.isFirstHit = true;
+            collectibleGenerator.stopGenerator();
         }
 
         else if(collision.gameObject.name == "Left Border")
@@ -126,10 +134,11 @@ public class BallBounce : MonoBehaviour
             ballMovement.player1Start = true;
             StartCoroutine(ballMovement.Launch());
             player1HitLast = false;
-            this.isFirstHit = true;        
+            this.isFirstHit = true;     
+            collectibleGenerator.stopGenerator();   
         }
-        print("player 1 hit last: "+player1HitLast);
         Instantiate(hitSFX, transform.position, transform.rotation);
+        
     }
 
     public bool getPlayerHitLast() => this.player1HitLast;
