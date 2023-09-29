@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class represents your player. It controls how fast you can move and how you move.
+/// </summary>
 public class Player1 : MonoBehaviour
 {
     [Range(1,20)]

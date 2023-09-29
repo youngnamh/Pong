@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class represents the computer player. 
+/// </summary>
 public class Player2 : MonoBehaviour
 {
     public float racketSpeed;
@@ -11,7 +14,9 @@ public class Player2 : MonoBehaviour
     private int counter;
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// This method sets the rb attribute and racket speeds.
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,6 +25,9 @@ public class Player2 : MonoBehaviour
         this.resetSpeed = 3;
     }
 
+    /// <summary>
+    /// This method controls the playing strategy of the computer.
+    /// </summary>
     private void FixedUpdate() {
 
         // if the ball is coming towards computer

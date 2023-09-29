@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The class that controls the ball, and how fast it moves. 
+/// </summary>
 public class BallMovement : MonoBehaviour
 {
 
@@ -37,7 +40,7 @@ public class BallMovement : MonoBehaviour
     /// <summary>
     /// After a delay of one second, calls MoveBall() at a specified starting Vector.
     /// </summary>
-    /// <returns>Coroutine for ball movement</returns>
+    /// <returns>Coroutine for ball movement.</returns>
     public IEnumerator Launch()
     {
         RestartBall();
@@ -57,7 +60,8 @@ public class BallMovement : MonoBehaviour
     /// <summary>
     /// Normalizes the direction of the ball and sets a new ballSpeed based on the hitCounter.
     /// </summary>
-    /// <param name="direction">A Vector2 object specifying the direction of the ball</param>
+    /// <param name="direction">A Vector2 object specifying the direction of the ball.</param>
+    /// <param name="bonus">A boolean denoting whether or not it is a bonus hit.</param>
     public void MoveBall(Vector2 direction, bool bonus = false)
     {
 
@@ -75,6 +79,10 @@ public class BallMovement : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method calculates how much the bonus power should be depending on how long the round is.
+    /// </summary>
+    /// <returns>The bonus amount.</returns>
     public int CalculateBonus() {
         if(this.hitCounter < 10) {
             return 20;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// This class manages the players power bars.
+/// </summary>
 public class PowerBarManager : MonoBehaviour
 {
     private int powerMax = 3;
@@ -12,6 +15,10 @@ public class PowerBarManager : MonoBehaviour
     public TextMeshProUGUI player1PowerLevelText;
     public TextMeshProUGUI player2PowerLevelText;
 
+    /// <summary>
+    /// Setter for player 1. WIll not go passed the powerMax.
+    /// </summary>
+    /// <param name="amount">amount</param>
     public void setPlayer1PL(int amount)
     {
         if(amount > this.powerMax) {
@@ -22,6 +29,10 @@ public class PowerBarManager : MonoBehaviour
         this.player1PowerLevelText.text = this.player1PowerLevel.ToString(); 
     }
 
+    /// <summary>
+    /// Setter for the computer. WIll not go passed the powerMax.
+    /// </summary>
+    /// <param name="amount">amount</param>
     public void setPlayer2PL(int amount)
     {
         if(amount > powerMax) {

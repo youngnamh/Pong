@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is used for the cases where a ball collides with borders or paddles. It is very closely
+/// linked with the BallMovement class and calls the MoveBall function from BallMovement 
+/// in order to designate the direction where the ball must bounce.
+/// </summary>
 public class BallBounce : MonoBehaviour
 {
     public GameObject hitSFX;
@@ -11,6 +16,11 @@ public class BallBounce : MonoBehaviour
     public bool player1HitLast = true;
 
 
+    /// <summary>
+    /// This method uses the collision object to calculate the direction the ball should bounce to. 
+    /// </summary>
+    /// <param name="collision">The collision object of a ball hitting eitehr a border or a paddle</param>
+    /// <param name="bonus">A boolean for if this bounce has a bonus speed multiplier</param>
     private void Bounce(Collision2D collision, bool bonus = false)
     {
         Vector3 ballPosition = transform.position;
@@ -35,6 +45,11 @@ public class BallBounce : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method will decide whether the ball should bounce after colliding with an object, or 
+    /// start a new round if someone scored a point.
+    /// </summary>
+    /// <param name="collision">The collision object of a ball hitting eitehr a border or a paddle</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.name == "Player 1")
