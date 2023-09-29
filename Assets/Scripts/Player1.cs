@@ -7,25 +7,31 @@ using UnityEngine;
 /// </summary>
 public class Player1 : MonoBehaviour
 {
-    [Range(1,20)]
-    public float racketSpeed;
+    private float racketSpeed = 10;
     private Rigidbody2D rb;
     private Vector2 racketDirection;
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// This method sets the player as rb. 
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This method sets the input controls and racketDirection.
+    /// </summary>
     void Update()
     {
         float directionY = Input.GetAxisRaw("Vertical");
         racketDirection = new Vector2(0,directionY).normalized;
     }
 
+    /// <summary>
+    /// This method moves the racket.
+    /// </summary>
     private void FixedUpdate()
     {
         rb.velocity = racketDirection * racketSpeed;

@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// This method checks the score. If it is equal to the final score, the game ends.
+    /// This method checks the score. If it is equal to the final score, the EndGame method is called.
     /// </summary>
     private void CheckScore()
     {
@@ -48,6 +48,10 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method has a short delay, then moves to the End Game scene.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(0.75f);

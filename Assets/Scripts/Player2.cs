@@ -10,14 +10,15 @@ public class Player2 : MonoBehaviour
 {
     private float racketSpeed;
     private float resetSpeed;
+    private int counter;
     private Rigidbody2D rb;
     public Rigidbody2D ball;
-    private int counter;
     public BallMovement ballMovement;
 
 
     /// <summary>
-    /// This method sets the rb attribute and racket speeds.
+    /// This method sets the computer to the rb attribute and racketSpeed. The
+    /// resetSpeed is how fast the computer goes back to the middle.
     /// </summary>
     void Start()
     {

@@ -9,12 +9,12 @@ using UnityEngine;
 /// </summary>
 public class BallBounce : MonoBehaviour
 {
+    private bool isFirstHit = true;
+    private bool player1HitLast = false;
     public GameObject hitSFX;
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
-    public bool isFirstHit = true;
-    public bool player1HitLast = false;
     public CollectibleGenerator collectibleGenerator;
 
 
@@ -60,13 +60,11 @@ public class BallBounce : MonoBehaviour
             //if its player 1's collectible
             if(player1HitLast && !isFirstHit) {
                 Destroy(collider.gameObject);
-                print("player1 got collectible");
                 int powerLevel = powerBarManager.getPlayer1PL();
                 powerBarManager.setPlayer1PL(powerLevel + 3);
             //if its player 2's collectible    
             } else if (!player1HitLast && !isFirstHit) {
                 Destroy(collider.gameObject);
-                print("player2 got collectible");
                 int powerLevel = powerBarManager.getPlayer2PL();
                 powerBarManager.setPlayer2PL(powerLevel + 3);
             }

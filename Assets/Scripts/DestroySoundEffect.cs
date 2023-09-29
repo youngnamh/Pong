@@ -7,7 +7,9 @@ using UnityEngine;
 /// </summary>
 public class DestroySoundEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// Destroys the gameObject.
+    /// </summary>
     void Start()
     {
         Destroy(gameObject, 1);        
