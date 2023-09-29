@@ -7,6 +7,8 @@ public class BallBounce : MonoBehaviour
     public GameObject hitSFX;
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
+    public PowerBarManager powerBarManager;
+    public bool player1HitLast = true;
 
 
     private void Bounce(Collision2D collision)
@@ -35,8 +37,18 @@ public class BallBounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Player 1" || collision.gameObject.name == "Player 2")
+        if(collision.gameObject.name == "Player 1")
         {
+            player1HitLast = true;
+            int powerLevel = powerBarManager.getPlayer1PL();
+            powerBarManager.setPlayer1PL(powerLevel + 1);
+            Bounce(collision);
+        } 
+        else if(collision.gameObject.name == "Player 2")
+        {
+            player1HitLast = false;
+            int powerLevel = powerBarManager.getPlayer2PL();
+            powerBarManager.setPlayer2PL(powerLevel + 1);
             Bounce(collision);
         }
 
@@ -45,6 +57,7 @@ public class BallBounce : MonoBehaviour
             scoreManager.Player1Goal();
             ballMovement.player1Start = false;
             StartCoroutine(ballMovement.Launch());
+            player1HitLast = true;
         }
 
         else if(collision.gameObject.name == "Left Border")
@@ -52,6 +65,7 @@ public class BallBounce : MonoBehaviour
             scoreManager.Player2Goal();
             ballMovement.player1Start = true;
             StartCoroutine(ballMovement.Launch());
+            player1HitLast = true;
         }
 
         Instantiate(hitSFX, transform.position, transform.rotation);

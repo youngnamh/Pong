@@ -31,6 +31,7 @@ public class ScoreManager : MonoBehaviour
     {
         if(player1Score == finalScore || player2Score == finalScore)
         {
+            //add wait for 1-2 seconds and sounds effect
             SceneManager.LoadScene(2);
         }
     }
