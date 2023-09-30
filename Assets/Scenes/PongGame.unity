@@ -650,10 +650,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tube (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2373690742180351203, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
-      propertyPath: m_TagString
-      value: interactable
-      objectReference: {fileID: 0}
     - target: {fileID: 3624238705594778188, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3
@@ -694,6 +690,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3903784678775675007, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
     - target: {fileID: 4337612808805971119, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
       propertyPath: m_Color.b
       value: 0.24056599
@@ -706,6 +706,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.0990566
       objectReference: {fileID: 0}
+    - target: {fileID: 7172277607620141143, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
+    - target: {fileID: 9168614833964652967, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3019,6 +3027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSFX: {fileID: 4999040199798052242, guid: 8ce01024a932f47fa859d1dabd543180, type: 3}
+  drumSFX: {fileID: 2535366978598406125, guid: fe0be8491024844048edd9029c54cbe6, type: 3}
+  scoreSFX: {fileID: 2074714241558460745, guid: f4712bf2c718d42038454aeb12ed4569, type: 3}
   ballMovement: {fileID: 1531777929}
   scoreManager: {fileID: 879286581}
   powerBarManager: {fileID: 879286582}
@@ -3475,6 +3485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3903784678775675007, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
     - target: {fileID: 4337612808805971119, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -3491,6 +3505,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.10309279
       objectReference: {fileID: 0}
+    - target: {fileID: 7172277607620141143, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
+    - target: {fileID: 9168614833964652967, guid: fc5e2c1fb3eb84994bed6eec42dfca2d, type: 3}
+      propertyPath: tubeSFX
+      value: 
+      objectReference: {fileID: 4244946435531432339, guid: a9505ebbf0ebe4d8aa83bcfb9aacd654, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

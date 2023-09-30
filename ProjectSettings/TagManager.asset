@@ -8,6 +8,7 @@ TagManager:
   - interactable
   - breakable
   - notch
+  - tubeSounds
   layers:
   - Default
   - TransparentFX

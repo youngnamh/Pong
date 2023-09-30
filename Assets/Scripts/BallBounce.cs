@@ -13,6 +13,8 @@ public class BallBounce : MonoBehaviour
     private bool player1HitLast = false;
     private Rigidbody2D rb;
     public GameObject hitSFX;
+    public GameObject drumSFX;
+    public GameObject scoreSFX;
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
@@ -79,6 +81,7 @@ public class BallBounce : MonoBehaviour
                 powerBarManager.setPlayer2PL(powerLevel + 7);
                 this.collectibleGenerator.decreaseTimeInterval();
             }
+            Instantiate(hitSFX, transform.position, transform.rotation);
         }
     }
     
@@ -140,6 +143,7 @@ public class BallBounce : MonoBehaviour
             this.isFirstHit = true;
             collectibleGenerator.stopGenerator();
             breakableGenerator.stopGenerator();
+            Instantiate(scoreSFX, transform.position, transform.rotation);
         }
 
         else if(collision.gameObject.name == "Left Border")
@@ -151,19 +155,23 @@ public class BallBounce : MonoBehaviour
             player1HitLast = false;
             this.isFirstHit = true;     
             collectibleGenerator.stopGenerator();  
-            breakableGenerator.stopGenerator(); 
+            breakableGenerator.stopGenerator();
+            Instantiate(scoreSFX, transform.position, transform.rotation); 
         }
 
         //Any breakable objects should be destroyed and they should spawn quicker
-        if(collision.gameObject.CompareTag("breakable"))
+        else if(collision.gameObject.CompareTag("breakable"))
         {
             Instantiate(particleEffectPlanet,collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             this.breakableGenerator.decreaseTimeInterval();
+            Instantiate(drumSFX, transform.position, transform.rotation);
+        } else {
+            Instantiate(drumSFX, transform.position, transform.rotation);
         }
 
 
-        Instantiate(hitSFX, transform.position, transform.rotation);
+
         
     }
 

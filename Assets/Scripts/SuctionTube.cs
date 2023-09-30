@@ -8,6 +8,7 @@ using UnityEngine;
 public class SuctionTube : MonoBehaviour
 {
     private float speed = 1.5f;
+    public GameObject tubeSFX;
 
     /// <summary>
     /// When the ball enters the suctionTube it increases speed.
@@ -28,6 +29,11 @@ public class SuctionTube : MonoBehaviour
             Vector2 boostedSpeed = ball.velocity * speed;
             ball.velocity = boostedSpeed;
         }
+        GameObject existingSFX = GameObject.FindWithTag("tubeSounds");
+
+        if(existingSFX == null) {
+            Instantiate(tubeSFX, transform.position, transform.rotation);
+        } 
     }
 
 }
