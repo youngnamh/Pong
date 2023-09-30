@@ -69,7 +69,6 @@ public class BreakableGenerator : MonoBehaviour
     private void DestroyAllBreakables()
     {
         GameObject[] blocks = GameObject.FindGameObjectsWithTag("breakable");
-        print(blocks);
         // Iterate through the found GameObjects and destroy them
         foreach (GameObject block in blocks)
         {

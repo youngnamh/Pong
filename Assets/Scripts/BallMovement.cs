@@ -13,7 +13,7 @@ public class BallMovement : MonoBehaviour
     private float maxExtraSpeed = 10;
     private bool player1Start = true;
     private int hitCounter = 0;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public PowerBarManager powerBarManager;
     public CollectibleGenerator collectibleGenerator;
     public BreakableGenerator breakableGenerator;
@@ -21,13 +21,24 @@ public class BallMovement : MonoBehaviour
     /// <summary>
     /// Set Rigidbody value and start the coroutine Launch().
     /// </summary>
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         StartCoroutine(Launch());
     }
 
+    private void FixedUpdate()
+    {
+        //if the-ball-is-out-of-bounds, restart -the-ball
+        if (transform.position.x > 10 || transform.position.x <-10 ||
+        transform.position.y>5 || transform.position.y<-5)
+        {
+            RestartBall();
+            StartCoroutine(Launch());
+        } 
+
+    }
 
     /// <summary>
     /// Sets the ball back in the middle of the screen.
