@@ -9,8 +9,8 @@ public class BreakableGenerator : MonoBehaviour
 {
     public GameObject blockPrefab;
     private Vector2 spawnArea = new Vector2(5f,4f);
-    private float initialTimeInterval = 8;
-    private float currentTimeInterval;
+    private float initialTimeInterval = 8f;
+    private float currentTimeInterval = 8f;
     private bool isGeneratorOn = false;
     private int breakableCount = 0;
 
@@ -41,6 +41,7 @@ public class BreakableGenerator : MonoBehaviour
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
         {   
+            yield return new WaitForSeconds(this.currentTimeInterval); 
 
 
             // Generate a random position within the spawn area
@@ -52,7 +53,6 @@ public class BreakableGenerator : MonoBehaviour
             // Instantiate the Coin prefab at the random position
             Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
 
-            yield return new WaitForSeconds(this.currentTimeInterval); 
         }
     }
 

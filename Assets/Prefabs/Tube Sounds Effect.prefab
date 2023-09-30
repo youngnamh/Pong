@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7202463144852263519}
   - component: {fileID: 1907837708051980140}
   - component: {fileID: 5543341866349255206}
+  - component: {fileID: 3191853444657784028}
   m_Layer: 0
   m_Name: Tube Sounds Effect
   m_TagString: tubeSounds
@@ -130,6 +131,18 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &5543341866349255206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244946435531432339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53efeb5994784fa18be052ca1e582f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3191853444657784028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

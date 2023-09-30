@@ -47,7 +47,6 @@ public class PitchIncreaser : MonoBehaviour
         } else {
             increasedPitch = maxPitch;
         }
-        print(increasedPitch);
         // Set the pitch of the AudioSource to the random value
         audioSource.pitch = increasedPitch;
 

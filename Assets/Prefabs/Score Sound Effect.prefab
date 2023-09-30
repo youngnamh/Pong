@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5124867382774096725}
   - component: {fileID: 1571882798054658961}
   - component: {fileID: 2361246361231174792}
+  - component: {fileID: -7882273002470431811}
   m_Layer: 0
   m_Name: Score Sound Effect
   m_TagString: Untagged
@@ -139,5 +140,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caec65a4a6da9432193a51bf2439d249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7882273002470431811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074714241558460745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53efeb5994784fa18be052ca1e582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

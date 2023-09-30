@@ -144,9 +144,7 @@ public class BallBounce : MonoBehaviour
             //Start new round, collectibles deactivated
             scoreManager.Player1Goal();
             ballMovement.Player1Start = false;
-            if(scoreManager.GetPlayer1Score() < scoreManager.GetFinalScore()) {
-                StartCoroutine(ballMovement.Launch());
-            }
+            StartCoroutine(ballMovement.Launch());
             this.isFirstHit = true;
             collectibleGenerator.stopGenerator();
             breakableGenerator.stopGenerator();
@@ -158,10 +156,7 @@ public class BallBounce : MonoBehaviour
             Instantiate(scoreSFX, transform.position, transform.rotation);
             scoreManager.Player2Goal();
             ballMovement.Player1Start = true;
-            if(scoreManager.GetPlayer2Score()+1 < scoreManager.GetFinalScore()) {
-                StartCoroutine(ballMovement.Launch());
-            }
-            
+            StartCoroutine(ballMovement.Launch());            
             player1HitLast = false;
             this.isFirstHit = true;     
             collectibleGenerator.stopGenerator();  

@@ -10,7 +10,7 @@ public class CollectibleGenerator : MonoBehaviour
     public GameObject coinPrefab;
     private Vector2 spawnArea = new Vector2(7f,4f);
     private float initialTimeInterval = 5;
-    private float currentTimeInterval;
+    private float currentTimeInterval = 5;
     private bool isGeneratorOn = false;
     private int collectibleCount = 0;
 
@@ -41,6 +41,7 @@ public class CollectibleGenerator : MonoBehaviour
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
         {
+            yield return new WaitForSeconds(currentTimeInterval); 
             // Generate a random position within the spawn area
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-spawnArea.x, spawnArea.x),
@@ -50,7 +51,6 @@ public class CollectibleGenerator : MonoBehaviour
             // Instantiate the Coin prefab at the random position
             Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
 
-            yield return new WaitForSeconds(currentTimeInterval); 
         }
     }
 

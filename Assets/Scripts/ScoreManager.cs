@@ -64,7 +64,7 @@ public class ScoreManager : MonoBehaviour
             endText.text = "THE MACHINES WIN!";
         }
         ballMovement.StopBall();
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(2);
     }
 

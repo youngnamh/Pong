@@ -64,7 +64,6 @@ public class BallMovement : MonoBehaviour
     }
 
     public void StopBall(){
-        RestartBall();
         MoveBall(new Vector2(0,0));
     }
 
