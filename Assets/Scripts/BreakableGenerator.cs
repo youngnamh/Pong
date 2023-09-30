@@ -9,7 +9,7 @@ public class BreakableGenerator : MonoBehaviour
 {
     public GameObject blockPrefab;
     private Vector2 spawnArea = new Vector2(5f,4f);
-    private float initialTimeInterval = 7;
+    private float initialTimeInterval = 8;
     private float currentTimeInterval;
     private bool isGeneratorOn = false;
     private int breakableCount = 0;
@@ -41,6 +41,7 @@ public class BreakableGenerator : MonoBehaviour
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
         {
+
             // Generate a random position within the spawn area
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-spawnArea.x, spawnArea.x),
@@ -57,7 +58,7 @@ public class BreakableGenerator : MonoBehaviour
     public void decreaseTimeInterval(){
         if(breakableCount<10){
             breakableCount ++;
-            this.currentTimeInterval -= 0.35f;
+            this.currentTimeInterval -= 0.2f;
         }
     }
 

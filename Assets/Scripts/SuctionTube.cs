@@ -17,9 +17,9 @@ public class SuctionTube : MonoBehaviour
     {
         //checks if the collider is the regular speed boost, or the maxSpeedBoost
         if (this.gameObject.name == "MaxSpeedBoost") {
-            this.speed = 2.0f; 
+            this.speed = 1.5f; 
         }else {
-            this.speed = 1.5f;
+            this.speed = 1.2f;
         }
 
         Rigidbody2D ball = collider.GetComponent<Rigidbody2D>();

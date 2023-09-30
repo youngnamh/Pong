@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4504743963814666909}
   - component: {fileID: 3706335738405393781}
   - component: {fileID: 1108226075780032517}
-  - component: {fileID: 6505823337402378789}
+  - component: {fileID: 7277525807095518412}
+  - component: {fileID: 4546199663713004926}
   m_Layer: 0
   m_Name: Block
   m_TagString: breakable
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.46961537, g: 0.20159996, b: 0.84, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4305bc418267849d9bda7685c9ad0b97, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,8 +114,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &6505823337402378789
-BoxCollider2D:
+--- !u!58 &7277525807095518412
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,15 +147,24 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
+--- !u!114 &4546199663713004926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217816845127036672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37381dbdfaedb455ba6a04db2a579ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageOptions:
+  - {fileID: 21300000, guid: 4305bc418267849d9bda7685c9ad0b97, type: 3}
+  - {fileID: 21300000, guid: 66cc04cb2c1c84aab9cfe34cb7bff043, type: 3}
+  - {fileID: 21300000, guid: 66b47b80e249142bf9f201832ad502c5, type: 3}
+  - {fileID: 21300000, guid: 8df1e0c1387e1490382968b5e0071416, type: 3}
+  - {fileID: 21300000, guid: 6a660a9399b52447fb85fbbd43a0a466, type: 3}
+  spriteRenderer: {fileID: 3706335738405393781}

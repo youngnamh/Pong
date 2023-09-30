@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class handles the GUI elements for the power bars.
+/// </summary>
 public class PowerBarGui : MonoBehaviour
 {
     public Image powerBar;
@@ -17,13 +20,17 @@ public class PowerBarGui : MonoBehaviour
     private int currentPowerCPU;
     private float lerpSpeed;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Sets the maxPower value.
+    /// </summary>
     void Start()
     {
         this.maxPower = powerBarManager.getPowerMax();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This method checks both player's power to see if they're respective bars need to be updated.
+    /// </summary>
     void Update()
     {
         this.currentPower1 = this.powerBarManager.getPlayer1PL();
@@ -32,10 +39,20 @@ public class PowerBarGui : MonoBehaviour
         PowerBarFiller();
     }
 
-    bool DisplayHealthPoint(float health, int pointNumber){
+    /// <summary>
+    /// This method is a helper used to calculate whether a specific notch in the power bar should be active.
+    /// </summary>
+    /// <param name="health"></param>
+    /// <param name="pointNumber"></param>
+    /// <returns></returns>
+    private bool DisplayHealthPoint(float health, int pointNumber){
         return (pointNumber >= health);
     } 
 
+    /// <summary>
+    /// This method fills up both powerBars with how many notches should be active based on maxPower and
+    /// both player's respective Power level. 
+    /// </summary>
     private void PowerBarFiller()
     {
         this.powerBar.fillAmount = Mathf.Lerp(this.powerBar.fillAmount, currentPower1 / maxPower, lerpSpeed);

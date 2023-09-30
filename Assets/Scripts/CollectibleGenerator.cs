@@ -57,7 +57,7 @@ public class CollectibleGenerator : MonoBehaviour
     public void decreaseTimeInterval(){
         if(collectibleCount<10){
             collectibleCount++;
-            this.currentTimeInterval -= 0.3f;
+            this.currentTimeInterval -= 0.2f;
         }
     }
 

@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 48707125
     locked: 0
+  - name: tubeLayer
+    uniqueID: 648932819
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
