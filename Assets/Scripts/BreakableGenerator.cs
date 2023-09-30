@@ -29,7 +29,7 @@ public class BreakableGenerator : MonoBehaviour
     /// </summary>
     public void stopGenerator() {
         this.isGeneratorOn = false;
-        DestroyAllCollectibles();
+        DestroyAllBreakables();
 
     }
 
@@ -66,10 +66,10 @@ public class BreakableGenerator : MonoBehaviour
     /// <summary>
     /// This method destroys all the collectibles that are currently active. 
     /// </summary>
-    private void DestroyAllCollectibles()
+    private void DestroyAllBreakables()
     {
         GameObject[] blocks = GameObject.FindGameObjectsWithTag("breakable");
-
+        print(blocks);
         // Iterate through the found GameObjects and destroy them
         foreach (GameObject block in blocks)
         {
