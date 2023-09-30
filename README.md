@@ -43,6 +43,9 @@ Player 1:
 - Add more levels
 - Add unlockables on beating certain levels or hitting achievements
 
+## Screenshots
+
+![Gameplay screenshot](./Assets/Screenshots/screenshot-gameplay1)
 
 ## Contributors
 
