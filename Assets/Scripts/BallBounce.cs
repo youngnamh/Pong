@@ -11,12 +11,21 @@ public class BallBounce : MonoBehaviour
 {
     private bool isFirstHit = true;
     private bool player1HitLast = false;
+    private Rigidbody2D rb;
     public GameObject hitSFX;
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
     public CollectibleGenerator collectibleGenerator;
     public BreakableGenerator breakableGenerator;
+    public GameObject particleEffectPlanet;
+    public GameObject particleEffectScore;
+    public GameObject particleEffectBonusHit;
+
+    
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+    }
 
 
     /// <summary>
@@ -94,6 +103,7 @@ public class BallBounce : MonoBehaviour
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
                 powerBarManager.setPlayer1PL(0);
+                Instantiate(particleEffectScore,collision.transform.position, Quaternion.identity);
                 Bounce(collision, true);
             // launch power shot if power ball is full    
             } else {
@@ -110,6 +120,7 @@ public class BallBounce : MonoBehaviour
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
                 powerBarManager.setPlayer2PL(0);
+                Instantiate(particleEffectScore,collision.transform.position, Quaternion.identity);
                 Bounce(collision, true);
             } else {
                 powerBarManager.setPlayer2PL(powerLevel + 3);
@@ -121,6 +132,7 @@ public class BallBounce : MonoBehaviour
         //Player 1 gets a point
         else if(collision.gameObject.name == "Right Border")
         {
+            Instantiate(particleEffectBonusHit,rb.transform.position, Quaternion.identity);
             //Start new round, collectibles deactivated
             scoreManager.Player1Goal();
             ballMovement.Player1Start = false;
@@ -132,6 +144,7 @@ public class BallBounce : MonoBehaviour
 
         else if(collision.gameObject.name == "Left Border")
         {
+            Instantiate(particleEffectBonusHit,rb.transform.position, Quaternion.identity);
             scoreManager.Player2Goal();
             ballMovement.Player1Start = true;
             StartCoroutine(ballMovement.Launch());
@@ -144,6 +157,7 @@ public class BallBounce : MonoBehaviour
         //Any breakable objects should be destroyed and they should spawn quicker
         if(collision.gameObject.CompareTag("breakable"))
         {
+            Instantiate(particleEffectPlanet,collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             this.breakableGenerator.decreaseTimeInterval();
         }
