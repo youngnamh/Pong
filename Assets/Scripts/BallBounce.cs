@@ -61,13 +61,13 @@ public class BallBounce : MonoBehaviour
             if(player1HitLast && !isFirstHit) {
                 Destroy(collider.gameObject);
                 int powerLevel = powerBarManager.getPlayer1PL();
-                powerBarManager.setPlayer1PL(powerLevel + 3);
+                powerBarManager.setPlayer1PL(powerLevel + 7);
                 this.collectibleGenerator.decreaseTimeInterval();
             //if its player 2's collectible    
             } else if (!player1HitLast && !isFirstHit) {
                 Destroy(collider.gameObject);
                 int powerLevel = powerBarManager.getPlayer2PL();
-                powerBarManager.setPlayer2PL(powerLevel + 3);
+                powerBarManager.setPlayer2PL(powerLevel + 7);
                 this.collectibleGenerator.decreaseTimeInterval();
             }
         }
@@ -97,7 +97,7 @@ public class BallBounce : MonoBehaviour
                 Bounce(collision, true);
             // launch power shot if power ball is full    
             } else {
-                powerBarManager.setPlayer1PL(powerLevel + 1);
+                powerBarManager.setPlayer1PL(powerLevel + 3);
                 Bounce(collision);
             }
         } 
@@ -112,7 +112,7 @@ public class BallBounce : MonoBehaviour
                 powerBarManager.setPlayer2PL(0);
                 Bounce(collision, true);
             } else {
-                powerBarManager.setPlayer2PL(powerLevel + 1);
+                powerBarManager.setPlayer2PL(powerLevel + 3);
                 Bounce(collision);
             }            
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PowerBarGui : MonoBehaviour
 {
     public Image powerBar;
+    public Image EmptyNotches;
     public PowerBarManager powerBarManager;
     public Image[] powerPoints;
     private int maxPower;
@@ -39,10 +40,6 @@ public class PowerBarGui : MonoBehaviour
         }
     }
 
-    private void ColorChanger()
-    {
-        Color healthColor = Color.Lerp(Color.red, Color.green, (currentPower1 / maxPower));
-        powerBar.color = healthColor;
-    }
+
 
 }
