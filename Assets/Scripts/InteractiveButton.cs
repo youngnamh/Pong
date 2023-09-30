@@ -13,6 +13,7 @@ public class InteractiveButton : MonoBehaviour
     public Sprite hover;
     public Sprite active;
     private Image buttonImage;
+    private Color originalColor;
 
 
     /// <summary>
@@ -21,6 +22,7 @@ public class InteractiveButton : MonoBehaviour
     void Start()
     {
         buttonImage = GetComponent<Image>();
+        originalColor = buttonImage.color;
 
         buttonImage.sprite = normal;
     }
@@ -31,6 +33,9 @@ public class InteractiveButton : MonoBehaviour
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Color hoverColor = originalColor;
+        hoverColor.a = 50f;
+        buttonImage.color = hoverColor;
         buttonImage.sprite = hover;
     }
 
@@ -41,6 +46,7 @@ public class InteractiveButton : MonoBehaviour
     public void OnPointerExit(PointerEventData eventData)
     {
         // Change the button's image back to the normal sprite.
+        buttonImage.color = originalColor;
         buttonImage.sprite = normal;
     }
 

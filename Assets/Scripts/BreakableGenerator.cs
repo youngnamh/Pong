@@ -40,7 +40,8 @@ public class BreakableGenerator : MonoBehaviour
     private IEnumerator SpawnBreakables()
     {
         while (isGeneratorOn) // Infinite loop for continuous spawning
-        {
+        {   
+
 
             // Generate a random position within the spawn area
             Vector2 spawnPosition = new Vector2(
