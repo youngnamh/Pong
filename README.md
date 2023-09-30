@@ -45,7 +45,7 @@ Player 1:
 
 ## Screenshots
 
-![Gameplay screenshot](./Assets/Screenshots/screenshot-gameplay1)
+![Gameplay screenshot](./Assets/Screenshots/screenshot-gameplay1.png)
 
 ## Contributors
 
