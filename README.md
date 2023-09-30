@@ -2,9 +2,12 @@
 
 ## Overview
 
-    This is a Pong game built using Unity with a twist. It's in space!' Test your reflexes in this single-player Pong game and see if you can defeat the machines!
+    This is a Pong game built using Unity with a twist. It's in space!
+    Test your reflexes in this single-player Pong game and see if you
+    can defeat the machines!
     
-    When you open the build, the main screen will have a "Rules" button. Press that to get a detailed instruction of the game mechanics.
+    When you open the build, the main screen will have a "Rules" button. 
+    Press that to get a detailed instruction of the game mechanics.
 
 ## Features
 
@@ -38,9 +41,7 @@ Player 1:
 - Improve AI for single-player mode.
 - Add more power-up types.
 - Add more levels
-- Add unlockabless on beating certain levels or hitting achievements
-
-## Screenshots
+- Add unlockables on beating certain levels or hitting achievements
 
 
 ## Contributors
