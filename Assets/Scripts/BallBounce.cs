@@ -15,6 +15,7 @@ public class BallBounce : MonoBehaviour
     public GameObject hitSFX;
     public GameObject drumSFX;
     public GameObject scoreSFX;
+    public GameObject guitarSFX;
     public BallMovement ballMovement;
     public ScoreManager scoreManager;
     public PowerBarManager powerBarManager;
@@ -96,6 +97,7 @@ public class BallBounce : MonoBehaviour
         //if the ball collides with Player 1
         if(collision.gameObject.name == "Player 1")
         {
+            Instantiate(guitarSFX, transform.position, transform.rotation);      
             ballMovement.IncreaseHitCounter();
             // player1 was the last to hit the ball (for collectibles)
             this.player1HitLast = true;
@@ -106,8 +108,9 @@ public class BallBounce : MonoBehaviour
             int powerMax = powerBarManager.getPowerMax();
             if(powerLevel >= powerMax ) {
                 powerBarManager.setPlayer1PL(0);
-                Instantiate(particleEffectScore,collision.transform.position, Quaternion.identity);
                 Bounce(collision, true);
+                Instantiate(guitarSFX, transform.position, transform.rotation);
+
             // launch power shot if power ball is full    
             } else {
                 powerBarManager.setPlayer1PL(powerLevel + 3);
@@ -116,6 +119,7 @@ public class BallBounce : MonoBehaviour
         } 
         else if(collision.gameObject.name == "Player 2")
         {
+            Instantiate(guitarSFX, transform.position, transform.rotation);      
             ballMovement.IncreaseHitCounter();
             this.player1HitLast = false;
             this.isFirstHit = false;
@@ -136,27 +140,33 @@ public class BallBounce : MonoBehaviour
         else if(collision.gameObject.name == "Right Border")
         {
             Instantiate(particleEffectBonusHit,rb.transform.position, Quaternion.identity);
+            Instantiate(scoreSFX, transform.position, transform.rotation);
             //Start new round, collectibles deactivated
             scoreManager.Player1Goal();
             ballMovement.Player1Start = false;
-            StartCoroutine(ballMovement.Launch());
+            if(scoreManager.GetPlayer1Score() < scoreManager.GetFinalScore()) {
+                StartCoroutine(ballMovement.Launch());
+            }
             this.isFirstHit = true;
             collectibleGenerator.stopGenerator();
             breakableGenerator.stopGenerator();
-            Instantiate(scoreSFX, transform.position, transform.rotation);
         }
 
         else if(collision.gameObject.name == "Left Border")
         {
             Instantiate(particleEffectBonusHit,rb.transform.position, Quaternion.identity);
+            Instantiate(scoreSFX, transform.position, transform.rotation);
             scoreManager.Player2Goal();
             ballMovement.Player1Start = true;
-            StartCoroutine(ballMovement.Launch());
+            if(scoreManager.GetPlayer2Score()+1 < scoreManager.GetFinalScore()) {
+                StartCoroutine(ballMovement.Launch());
+            }
+            
             player1HitLast = false;
             this.isFirstHit = true;     
             collectibleGenerator.stopGenerator();  
             breakableGenerator.stopGenerator();
-            Instantiate(scoreSFX, transform.position, transform.rotation); 
+             
         }
 
         //Any breakable objects should be destroyed and they should spawn quicker

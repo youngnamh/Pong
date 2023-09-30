@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour
 
     public TextMeshProUGUI player1ScoreText;
     public TextMeshProUGUI player2ScoreText;
+    public TextMeshProUGUI endText;
+    public BallMovement ballMovement;
 
     /// <summary>
     /// This method adds a point to player 1 and checks if the game is over.
@@ -54,8 +56,24 @@ public class ScoreManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(0.75f);
+        if(player1Score > player2Score){
+            endText.color = Color.green;
+            endText.text = "YOU WIN!";
+        } else {
+            endText.color = Color.red;
+            endText.text = "THE MACHINES WIN!";
+        }
+        ballMovement.StopBall();
+        yield return new WaitForSeconds(5.0f);
         SceneManager.LoadScene(2);
     }
 
+        // Getter for finalScore
+    public int GetFinalScore() {return finalScore;}
+
+    // Getter for player1Score
+    public int GetPlayer1Score() {return player1Score;} 
+
+    // Getter for player2Score
+    public int GetPlayer2Score() {return player2Score;}  
 }

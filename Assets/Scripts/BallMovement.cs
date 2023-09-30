@@ -63,6 +63,11 @@ public class BallMovement : MonoBehaviour
         }
     }
 
+    public void StopBall(){
+        RestartBall();
+        MoveBall(new Vector2(0,0));
+    }
+
     /// <summary>
     /// Normalizes the direction of the ball and sets a new ballSpeed based on the hitCounter.
     /// </summary>

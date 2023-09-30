@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A Class that assigns a random sprite to an object out of a collection of sprites.
+/// </summary>
 public class NewBehaviourScript : MonoBehaviour
 {
     public Sprite[] imageOptions; 
     public SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// This method randomly selects the sprite.
+    /// </summary>
     void Start()
     {
         if (imageOptions.Length == 0)
