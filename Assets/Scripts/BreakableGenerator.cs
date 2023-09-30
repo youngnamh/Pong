@@ -12,6 +12,7 @@ public class BreakableGenerator : MonoBehaviour
     private float initialTimeInterval = 7;
     private float currentTimeInterval;
     private bool isGeneratorOn = false;
+    private int breakableCount = 0;
 
 
     /// <summary>
@@ -54,7 +55,10 @@ public class BreakableGenerator : MonoBehaviour
     }
 
     public void decreaseTimeInterval(){
-        this.currentTimeInterval -= 0.35f;
+        if(breakableCount<10){
+            breakableCount ++;
+            this.currentTimeInterval -= 0.35f;
+        }
     }
 
     /// <summary>
@@ -69,5 +73,6 @@ public class BreakableGenerator : MonoBehaviour
         {
             Destroy(block);
         }
+        breakableCount = 0;
     }
 }

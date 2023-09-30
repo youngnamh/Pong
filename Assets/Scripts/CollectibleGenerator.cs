@@ -12,6 +12,7 @@ public class CollectibleGenerator : MonoBehaviour
     private float initialTimeInterval = 5;
     private float currentTimeInterval;
     private bool isGeneratorOn = false;
+    private int collectibleCount = 0;
 
 
     /// <summary>
@@ -54,7 +55,10 @@ public class CollectibleGenerator : MonoBehaviour
     }
 
     public void decreaseTimeInterval(){
-        this.currentTimeInterval -= 0.3f;
+        if(collectibleCount<10){
+            collectibleCount++;
+            this.currentTimeInterval -= 0.3f;
+        }
     }
 
     /// <summary>
@@ -69,5 +73,6 @@ public class CollectibleGenerator : MonoBehaviour
         {
             Destroy(coin);
         }
+        collectibleCount = 0;
     }
 }

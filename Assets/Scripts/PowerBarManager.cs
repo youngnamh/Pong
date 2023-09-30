@@ -12,8 +12,6 @@ public class PowerBarManager : MonoBehaviour
     private int powerMax = 30;
     private int player1PowerLevel = 0;
     private int player2PowerLevel = 0; 
-    public TextMeshProUGUI player1PowerLevelText;
-    public TextMeshProUGUI player2PowerLevelText;
 
 
 
@@ -29,7 +27,6 @@ public class PowerBarManager : MonoBehaviour
         } else {
             this.player1PowerLevel = amount;
         }
-        this.player1PowerLevelText.text = this.player1PowerLevel.ToString(); 
     }
 
     /// <summary>
@@ -43,7 +40,6 @@ public class PowerBarManager : MonoBehaviour
         } else {
             this.player2PowerLevel = amount;
         }
-        this.player2PowerLevelText.text = player2PowerLevel.ToString(); 
     }
 
 
